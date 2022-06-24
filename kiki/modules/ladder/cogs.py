@@ -24,7 +24,7 @@ class Ladder(commands.Cog):
             return
 
         # Ignore messages not sent in lounge.
-        if message.channel.id != 604373743837511693:
+        if message.channel.id != 793970769842536458:
             return
 
         # Send the API request.
