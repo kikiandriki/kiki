@@ -21,6 +21,9 @@ class Kiki(Bot):
         # Continue with the usual initialization.
         super().__init__(command_prefix=when_mentioned, help_command=None, **kwargs)
 
+        # Load all modules.
+        self.load_extension("kiki.modules.ladder")
+
     async def on_ready(self):
         """Discord Bot on ready."""
 
