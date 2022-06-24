@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        VARIANT: 3.10-bullseye
+        NODE_VERSION: "16"
+    volumes:
+      - ..:/workspace:cached
+    command: sleep infinity
+    hostname: app

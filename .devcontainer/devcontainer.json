@@ -1,0 +1,27 @@
+{
+  "name": "kiki",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/workspace/.venv/bin/python",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "python.formatting.provider": "black",
+        "python.formatting.blackPath": "/workspace/.venv/bin/black",
+        "python.linting.pylintPath": "/workspace/.venv/bin/pylint"
+      },
+      "extensions": ["ms-python.python", "ms-python.vscode-pylance"]
+    }
+  },
+  // "forwardPorts": [5000, 5432],
+  "postCreateCommand": "poetry install",
+  "remoteUser": "vscode",
+  "features": {
+    "docker-from-docker": "latest",
+    "git": "latest",
+    "github-cli": "latest"
+  }
+}

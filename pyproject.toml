@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "kiki"
+version = "0.1.0"
+description = "The official companion chat bot for the Kiki & Riki Discord server. Kiki helps power Discord integrations on the Kiki & Riki platform."
+authors = ["matootie <matootie@icloud.com>"]
+
+[tool.poetry.scripts]
+kiki = "kiki.main:app"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+"discord.py" = "^1.7.3"
+python-dotenv = "^0.19.2"
+
+[tool.poetry.dev-dependencies]
+black = "^21.12b0"
+pylint = "^2.12.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
