@@ -3,6 +3,7 @@
 
 import os
 import re
+import logging
 
 from discord.ext import commands
 from discord.message import Message
