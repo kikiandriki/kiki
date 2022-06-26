@@ -34,7 +34,7 @@ class Ladder(commands.Cog):
 
         # Parse valid emojis from message.
         content = message.content
-        emojis = [e.split(':')[2].replace('>', '') for e in re.findall(r"<a?:\w*:\d*>", content)]
+        emojis = [f"{a}:{b}" for a, b in re.findall(r"<(a?):\w*:(\d*)>", content)]
 
         # Send the API requests.
         await api.post("ladder", f"/messages/{message.author.id}")
