@@ -3,7 +3,6 @@
 
 import os
 import re
-import logging
 
 from discord.ext import commands
 from discord.message import Message
@@ -34,16 +33,9 @@ class Ladder(commands.Cog):
             return
 
         # Parse valid emojis from message.
-        server_id = os.environ.get("SERVER_ID", "558027628502712330")
-        emojis = re.findall(r"<:\w*:\d*>", message.content)
-        emojis = [int(e.split(':')[2].replace('>', '')) for e in emojis]
-        custom_emojis = self.bot.get_guild(int(server_id)).emojis
-        valid_emojis = [get(custom_emojis, id=e) for e in emojis]
-        emoji_ids = [str(e.id) for e in filter(lambda x: x is not None, valid_emojis)]
-
-        logging.info("Message received from %s.", server_id)
-        logging.info("Qualified emojis: %s", emoji_ids)
+        content = message.content
+        emojis = [e.split(':')[2].replace('>', '') for e in re.findall(r"<a?:\w*:\d*>", content)]
 
         # Send the API requests.
         await api.post("ladder", f"/messages/{message.author.id}")
-        await api.post("ladder", f"/emotes/{message.author.id}", emoji_ids)
+        await api.post("ladder", f"/emotes/{message.author.id}", emojis)
