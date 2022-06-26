@@ -40,6 +40,9 @@ class Ladder(commands.Cog):
         valid_emojis = [get(custom_emojis, id=e) for e in emojis]
         emoji_ids = [str(e.id) for e in filter(lambda x: x is not None, valid_emojis)]
 
+        logging.info("Message received from %s.", server_id)
+        logging.info("Qualified emojis: %s", emoji_ids)
+
         # Send the API requests.
         await api.post("ladder", f"/messages/{message.author.id}")
         await api.post("ladder", f"/emotes/{message.author.id}", emoji_ids)
